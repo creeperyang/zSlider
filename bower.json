@@ -11,7 +11,7 @@
   ],
   "main": [
     "dist/zSlider.js",
-    "dist/zSlider.css",
+    "dist/zSlider.css"
   ],
   "keywords": [
     "Slider",
