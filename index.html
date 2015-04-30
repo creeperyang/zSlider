@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>zSlider by creeperyang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">zSlider</h1>
+      <h2 class="project-tagline">A pure JavaScript Carousel/Slider plugin that works well at Mobile/PC</h2>
+      <a href="https://github.com/creeperyang/zSlider" class="btn">View on GitHub</a>
+      <a href="https://github.com/creeperyang/zSlider/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/creeperyang/zSlider/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="zslider" class="anchor" href="#zslider" aria-hidden="true"><span class="octicon octicon-link"></span></a>zSlider</h1>
+
+<blockquote>
+<p>A pure JavaScript Carousel/Slider plugin that works well at Mobile/PC.</p>
+</blockquote>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<p>This plugin wrote in pure JavaScript and has no dependencies like <code>jQuery</code>.</p>
+
+<p>Install the plugin via bower</p>
+
+<div class="highlight highlight-shell"><pre>bower install zSlider --save</pre></div>
+
+<p>Once the plugin has been installed, you can use it easily:</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h3>
+
+<p>You can just generate a slider with one line:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> slider <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Slider</span>(<span class="pl-s"><span class="pl-pds">'</span>#slider1<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>.z-slide-item<span class="pl-pds">'</span></span>);</pre></div>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>z-slide-wrap top<span class="pl-pds">"</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">'</span>slider1<span class="pl-pds">'</span></span>&gt;
+    &lt;<span class="pl-ent">ul</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>z-slide-content<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">li</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>z-slide-item<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+        &lt;<span class="pl-ent">li</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>z-slide-item<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+        &lt;<span class="pl-ent">li</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>z-slide-item<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;/<span class="pl-ent">ul</span>&gt;
+&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<h3>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h3>
+
+<p>When init with <code>new Slider(container, slideItems, option);</code>, a optional config can be used. What can be config?</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> option <span class="pl-k">=</span> {
+    <span class="pl-s"><span class="pl-pds">'</span>current<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">0</span>, <span class="pl-c">// 初始化时显示项index</span>
+    <span class="pl-s"><span class="pl-pds">'</span>duration<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">0.8</span>, <span class="pl-c">// 单位：秒</span>
+    <span class="pl-s"><span class="pl-pds">'</span>minPercentToSlide<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">null</span>, <span class="pl-c">// swipe至少多少距离时触发slide</span>
+    <span class="pl-s"><span class="pl-pds">'</span>autoplay<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-c">// 是否自动轮播</span>
+    <span class="pl-s"><span class="pl-pds">'</span>direction<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>left<span class="pl-pds">'</span></span>, <span class="pl-c">// 自动轮播方向</span>
+    <span class="pl-s"><span class="pl-pds">'</span>interval<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">5</span> <span class="pl-c">// 单位：秒，最好大于2（尤其开启自动轮播时）</span>
+};</pre></div>
+
+<h3>
+<a id="usage-examples" class="anchor" href="#usage-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage Examples</h3>
+
+<p>There is a built-in demo:</p>
+
+<div class="highlight highlight-shell"><pre>git clone git@github.com:creeperyang/zSlider.git
+<span class="pl-c1">cd</span> zSlider
+npm install
+grunt serve</pre></div>
+
+<h2>
+<a id="release-history" class="anchor" href="#release-history" aria-hidden="true"><span class="octicon octicon-link"></span></a>Release History</h2>
+
+<p>2015-04-30    <code>v0.0.1</code>    初始版本</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2015 creeperyang. Licensed under the MIT license.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/creeperyang/zSlider">zSlider</a> is maintained by <a href="https://github.com/creeperyang">creeperyang</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
