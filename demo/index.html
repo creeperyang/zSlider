@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>zSlider Demos</title>
+    <meta name="description" content="wifi admin, wifi">
+    <meta name="viewport" content="width=device-width">
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/zSlider.css">
+    <!-- endbuild -->
+</head>
+
+<body>
+    <div>
+        <header class="cy-topbar">
+            <div class="title">zSlider Demos</div>
+        </header>
+        <article>
+            <div class="z-slide-wrap top" id='slider1'>
+                <ul class="z-slide-content">
+                    <li class="z-slide-item">
+                        <a href="#tip1">
+                            <h3>纯JavaScript实现的轮播插件，无jQuery依赖。</h3>
+                        </a>
+                    </li>
+                    <li class="z-slide-item">
+                        <a href="#tip2">
+                            <h3>为移动端打造，兼容PC。</h3>
+                        </a>
+                    </li>
+                    <li class="z-slide-item">
+                        <a href="#tip3">
+                            <h3>易于定制，tap/slideend等多事件接口。</h3>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="inner-wrap">
+                <h3>1. 可自定义轮播图的长宽和其它样式</h3>
+                <div class="z-slide-wrap" id='slider2'>
+                    <ul class="z-slide-content">
+                        <li class="z-slide-item">
+                            <a href="#image1" style="background-image: url(/images/1.jpg)" data-uuid='1'></a>
+                        </li>
+                        <li class="z-slide-item">
+                            <a href="#image2" style="background-image: url(/images/2.jpg)" data-uuid='2'></a>
+                        </li>
+                        <li class="z-slide-item">
+                            <a href="#image3" style="background-image: url(/images/3.jpg)" data-uuid='3'></a>
+                        </li>
+                    </ul>
+                </div>
+                <h3>2. 丰富的自定义事件</h3>
+                <ul class="event-list">
+                    <li>tap: <span>no</span></li>
+                    <li>sort: <span>no</span></li>
+                    <li>slideend: <span>no</span></li>
+                    <li>sortend: <span>no</span></li>
+                    <li>swipestart: <span>no</span></li>
+                    <li>swipe: <span>no</span></li>
+                    <li>swipeend: <span>no</span></li>
+                </ul>
+            </div>
+        </article>
+    </div>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/zSlider.js"></script>
+    <script src="scripts/app.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>

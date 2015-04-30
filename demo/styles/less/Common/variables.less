@@ -1,0 +1,55 @@
+//
+// ----------variables-------------
+//
+
+// base font (html tag)
+@font-size-base: 20px; // 1rem = 20px;
+
+//------------font size------------
+@font-size-normal: 0.7rem; // 14px;
+@font-size-large: 1rem; // 20px;
+@font-size-larger: 1.5rem; // 20px;
+@font-size-small: 0.6rem; //12px;
+
+@font-size-title: @font-size-larger; 
+@font-size-text: @font-size-normal; 
+
+@line-height-base:        1.428571429; // 20/14
+
+//------------element size------------
+@padding-base-vertical: 0.3rem;
+@padding-base-horizontal: 0.6rem;
+
+@padding-large-vertical: 0.5rem;
+@padding-large-horizontal: 0.8rem;
+
+@border-radius-base: 0.2rem; 
+@border-radius-large: 0.4rem;
+@border-radius-small: 0.1rem;
+@border-radius: 0; // default no border radius
+
+//------------color------------
+@gray-base: #999;
+@gray-black: #333;
+@gray-darker: darken(@gray-base, 30%); // #4d4d4d;
+@gray-dark: darken(@gray-base, 15%); // #737373
+@gray: @gray-base;
+@gray-light: lighten(@gray-base, 20%); // #ccc
+@gray-lighter: lighten(@gray-base, 30%); // #e5e5e5
+
+@brand-primary: #099fde;
+@brand-success: #5cb85c;
+@brand-info: #5bc0de;
+@brand-warning: #ff7d13;
+@brand-danger: #d9534f;
+
+//font color
+@title-color: @gray-black;
+@text-color: @gray-darker;
+//other color
+@link-color: @brand-primary;
+@link-hover-color: darken(@link-color, 15%);
+@bg-color: #fff;
+@border-color: @gray-light;
+// button disable color
+@btn-disabled-color: #9ba6ae;

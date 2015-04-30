@@ -1,0 +1,342 @@
+// ---------------mixins-------------
+
+// clear float-----------------------------------
+.clearfix() {
+    &:before, &:after {
+        content: " "; // 1
+        display: table; // 2
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+// box-sizing------------------------------------
+.box-sizing(@box) {
+    -webkit-box-sizing: @box;
+    -moz-box-sizing: @box;
+    box-sizing: @box;
+}
+
+// border radius------------------------------------
+.border-top-radius(@radius) {
+  border-top-right-radius: @radius;
+   border-top-left-radius: @radius;
+}
+.border-right-radius(@radius) {
+  border-bottom-right-radius: @radius;
+     border-top-right-radius: @radius;
+}
+.border-bottom-radius(@radius) {
+  border-bottom-right-radius: @radius;
+   border-bottom-left-radius: @radius;
+}
+.border-left-radius(@radius) {
+  border-bottom-left-radius: @radius;
+     border-top-left-radius: @radius;
+}
+
+// style text------------------------------------
+.style-text(@margin-top: 0, @margin-bottom: 0, @color: #434a54, @font-size: 1.4rem, @font-weight: normal) { // always h1-h6
+    margin-top: @margin-top;
+    margin-bottom: @margin-bottom;
+
+    font-weight: @font-weight;
+    font-size: @font-size;
+    color: @color;
+}
+.ellipsis() { // text ellipsis
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+// background image
+.bg-img-center() {
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+
+// item--------------------------------------------------
+// 水平item-block，3段。 自适应，则@left-width, @middle-width, @right-width百分比更好
+.item-horizontal(@width: 100%, @height: 180px, @padding: 20px, @bg-color: #fff, 
+    @left-width, @middle-width, @right-width, @middle-left-padding, @middle-right-padding) {
+    position: relative;
+
+    display: block;
+    width: @width;
+    height: @height;
+    padding: @padding;
+
+    background-color: @bg-color;
+    &>a { // 可选的a标签包裹
+        position: relative;
+
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    .item-logo, .item-info, .item-action {
+        float: left;
+        overflow: hidden;
+        height: 100%;
+    }
+    .item-logo {
+        width: @left-width;
+        .bg-img-center();
+        img {
+            max-height: 100%;
+            width: 100%;
+        }
+    }
+    .item-info {
+        width: @middle-width;
+        padding-right: @middle-right-padding;
+        padding-left: @middle-left-padding;
+        .item-info-title {
+            .style-text(0.6rem, 0.6rem);
+        }
+        .item-info-des {
+            .style-text(0, 0, @text-color, 1.1rem);
+        }
+    }
+    .item-action {
+        display: table;
+        width: @right-width;
+        table-layout: fixed;
+        .item-action-inner { // tabel-cell, els inside it can be center easily
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .icon {
+            //width: 0.85rem;
+            width: 100%; // 更大可触控/点击区域
+            height: 1.5rem;
+        }
+    }
+}
+// 水平item-block，2段。action绝对定位
+// update: 左半段固定大小，有半段占据剩余部分，按钮绝对定位右上角
+.item-horizontal-compact(@width: 100%; @height: 180px; @padding-top: 20px; 
+    @padding-left: 20px; @bg-color: #fff; @left-width;
+    @middle-left-padding; @right-width; @right-height) {
+    position: relative;
+
+    display: block;
+    width: @width;
+    height: @height;
+    padding: @padding-top @padding-left;
+
+    background-color: @bg-color;
+    &>a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    .item-logo, .item-info{
+        overflow: hidden;
+    }
+    .item-logo {
+        width: @left-width;
+        height: 100%; // can use background-image instead of img
+        .bg-img-center();
+        img {
+            max-height: 100%;
+            width: 100%;
+        }
+    }
+    .item-info {
+        position: absolute;
+        left: @middle-left-padding + @padding-left + @left-width + 0.1;
+        top: @padding-top;
+        right: @padding-left;
+        bottom: @padding-top;
+        .item-info-title {
+            padding-right: @right-width + @padding-left + 0.2;
+            .style-text(0.6rem, 0.6rem);
+            .ellipsis();
+        }
+        .item-info-subtitle {
+            .style-text(0, 0.3rem, @text-color, 1.1rem);
+        }
+        .item-info-des {
+            .style-text(0, 0, @text-color, 1.1rem);
+            &.two-line {
+                line-height: 1.5rem;
+                height: 3rem;
+                overflow: hidden;
+            }
+        }
+    }
+    .item-action {
+        position: absolute;
+        right: @padding-left;
+        top: @padding-top;
+
+        .btn {
+            width: @right-width;
+            height: @right-height;
+
+            line-height: @right-height;
+        }
+    }
+}
+// 垂直item-block，3段（都是可选的）
+.item-vertical(@width: 150px, @height: auto, @padding: 0, @bg-color: #fff, 
+    @img-height: auto, @middle-width, @right-width, @middle-left-padding, @middle-right-padding) {
+    position: relative;
+
+    display: block;
+    width: @width;
+    height: @height;
+    padding: @padding;
+
+    background-color: @bg-color;
+    &>a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    .item-logo, .item-info, .item-action {
+        display: block;
+        width: 100%;
+    }
+    .item-logo {
+        height: @img-height;
+        .bg-img-center();
+        img {
+            max-height: 100%;
+            width: 100%;
+        }
+    }
+    .item-info {
+        width: 100%;
+        .item-info-title {
+            .style-text(0.7rem, 0.4rem, #434a54, 1.3rem);
+            .ellipsis();
+        }
+        .item-info-des {
+            .style-text(0, 0, #99a3b1, 1.1rem);
+            .ellipsis();
+        }
+    }
+    .item-action {
+        margin-top: 1rem;
+        text-align: center;
+    }
+}
+
+
+// 列表---------------------------------------------------
+.list-vertical(icon; @width: 100%; @height: 40px; @icon-width: 50px; 
+    @icon-height: 50px; @padding: 24px; @border-color: #ccc) {
+    .list-item {
+        position: relative;
+        display: block;
+        width: @width;
+        height: @height;
+        padding-left: @icon-width + @padding;
+        &:not(:last-child) {
+            .text {
+                border-bottom: 1px solid @border-color;
+            }
+        }
+    }
+    .icon {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -@icon-height / 2;
+        width: @icon-width;
+        height: @icon-height;
+    }
+    .text {
+        height: @height;
+        width: 100%;
+
+        line-height: @height;
+        .style-text(0, 0, #99a3b1, 1.3rem);
+        .ellipsis();
+    }
+}
+
+.list-horizontal(icon; @width: 100%; @item-count: 3; @padding: 30px 22px) {
+    .clearfix();
+    .list-item {
+        display: block;
+        float: left;
+        width: (@width / @item-count);
+        height: 100%;
+        padding: @padding;
+
+        text-align: center;
+    }
+}
+
+// buttons---------------------------------------------------
+.btn(@width: 80px, @height: 36px, @radius, @font-size: 14px, @font-color, @color) {
+    display: inline-block;
+    width: @width;
+    height: @height;
+
+    line-height: @height;
+    font-size: @font-size; 
+    color: @font-color;
+    text-align: center;
+
+    background-color: @color;
+    border-radius: @radius;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    &:active {
+        background-color: darken(@color, 10%);
+    }
+}
+.btn(ghost; @width: 80px; @height: 36px; @radius; @font-size: 14px; @font-color; @color) {
+    display: inline-block;
+    width: @width;
+    max-width: 100%;
+    height: @height;
+
+    line-height: @height;
+    font-size: @font-size;
+    color: @color;
+    text-align: center;
+
+    border: 1px solid @color;
+    border-radius: @radius;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    &:active {
+        background-color: @color;
+        color: @font-color;
+    }
+}
+
+// text inputs---------------------------------------------------
+.text-input(@width, @height, @padding-hor, @padding-ver, @border-color, @active-border-color, @radius, @font-size, @font-color) {
+    display: inline-block;
+    width: @width;
+    height: @height;
+    padding: @padding-ver @padding-hor;
+
+    line-height: @height - @padding-ver * 2;
+    font-size: @font-size;
+    color: @font-color;
+
+    border-radius: @radius;
+    border: 1px solid @border-color;
+    outline: none;
+    &:active, &:focus {
+        border-color: @active-border-color;
+    }
+}

@@ -1,0 +1,75 @@
+@baseUrl: 'Common/';
+@import '@{baseUrl}variables.less';
+@import '@{baseUrl}variables-custom.less';
+@import '@{baseUrl}mixins.less';
+@import '@{baseUrl}normalize.less';
+@import '@{baseUrl}common.less';
+@import '@{baseUrl}button.less';
+@import '@{baseUrl}item.less';
+@import '@{baseUrl}icons.less';
+@import '@{baseUrl}list.less';
+@import '@{baseUrl}topbar.less';
+@import '@{baseUrl}input.less';
+
+// ----------variables-------------
+@g-topbar-height: 4.4rem; //88px
+@g-topbar-icon-height: 1.7rem; //34px
+@g-topbar-icon-width: 0.85rem; //17px
+@g-topbar-icon-top-padding: 1.35rem; //27px;
+
+
+.cy-topbar {
+    .icon-back {
+        height: @g-topbar-icon-height;
+        width: @g-topbar-icon-width;
+    }
+}
+
+#slider1 {
+    .z-slide-item{
+        color: #fff;
+        &:nth-child(1) {
+            background-color: @brand-success;
+        }
+        &:nth-child(2) {
+            background-color: @brand-primary;
+        }
+        &:nth-child(3) {
+            background-color: @brand-danger;
+        }
+        a {
+            color: #fff;
+        }
+        h3 {
+            margin-top: 24px;
+            font-size: 24px;
+            font-weight: normal;
+            text-align: center;
+        }
+    }
+    .z-slide-dot.active {
+        background-color: #000;
+    }
+}
+.inner-wrap {
+    max-width: 720px;
+    margin: 16px auto;
+    h3 {
+        font-size: 20px;
+        font-weight: normal;
+        margin: 12px 0;
+    }
+}
+#slider2 {
+    height: 240px;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.2), 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+.event-list {
+    margin-left: 32px;
+    li {
+        font-size: 14px;
+        span{
+            color: @brand-primary;
+        }
+    }
+}

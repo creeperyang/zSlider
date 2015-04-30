@@ -1,0 +1,155 @@
+@import 'variables.less';
+@import 'variables-custom.less';
+@import 'mixins.less';
+
+// utilities--------------------------------------------
+.img-responsive, .video-responsive{
+    width: 100%;
+    height: auto;
+    -webkit-text-adjust: none;
+}
+.lead-title {
+    color: @title-color;
+    font-size: @font-size-large;
+    font-weight: normal;
+    line-height: 1.4;
+}
+// list
+.unstyled-list {
+    margin-left: 0;
+    list-style: none;
+}
+.hidden {
+    display: none !important;
+}
+.clearfix {
+    .clearfix();
+}
+.left-rect { // remove left corner
+    .border-left-radius(0);
+}
+.right-rect { // remove right corner
+    .border-right-radius(0);
+}
+
+.bottom-line {
+    border-bottom: 1px solid @gray-light;
+}
+
+// container/box--------------------------------------
+.flat-container {
+    display: block;
+    width: 100%;
+    margin: 0.8rem 0;
+    &.compact {
+        padding: 0 0.8rem;
+    }
+    &.slim {
+        margin: 0.5rem 0;
+        padding: 0 0.5rem;
+    }
+}
+
+.block-flat { 
+    display: block;
+    width: 100%;
+
+    background-color: #fff;
+    border-bottom: 1px solid @border-color;
+    .header {
+        position: relative;
+        padding: 1.2rem 1.2rem 0;
+        margin-bottom: 1.2rem;
+        &>a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .title {
+            .style-text(0, 0);
+            &.bottom-line {
+                padding-bottom: 0.4rem;
+            }
+        }
+        .subtitle {
+            .style-text(1rem, 0, @text-color, @font-size-normal);
+        }
+        .action {
+            position: absolute;
+            right: 1.2rem;
+            top: 1.2rem;
+
+            &>a, &>span {
+                font-size: 1.2rem;
+                color: @brand-warning;
+            }
+        }
+    }
+    .content {
+        margin-top: 1.2rem;
+        padding: 0 1.2rem 1.2rem;
+        &.no-top-padding {
+            padding-top: 0;
+            margin-top: 0;
+        }
+    }
+}
+
+.block-flat-simple { 
+    display: block;
+    width: 100%;
+    padding: 1rem;
+
+    background-color: #fff;
+    border-bottom: 1px solid @border-color;
+    .header {
+        position: relative;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid @border-color;
+        &>a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .title {
+            .style-text(0, 0);
+        }
+        .subtitle {
+            .style-text(1rem, 0, @text-color, @font-size-normal);
+        }
+        .action {
+            position: absolute;
+            right: 1.5rem;
+            top: 0;
+
+            &>a, &>span {
+                font-size: 1.2rem;
+                color: @brand-warning;
+            }
+        }
+    }
+    .content {
+        padding-top: 1rem;
+        &.no-top-padding {
+            padding-top: 0;
+        }
+    }
+}
+
+.block-fixed {
+    position: fixed;
+    left: 0;
+
+    display: block;
+    width: 100%;
+    height: 5rem;
+
+    text-align: center;
+
+    background-color: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+
+    &.fixed-to-bottom {
+        bottom: 0;
+    }
+}

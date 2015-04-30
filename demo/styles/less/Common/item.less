@@ -1,0 +1,50 @@
+@import 'variables.less';
+@import 'variables-custom.less';
+@import 'mixins.less';
+
+// 通用的item，水平3/2段item,垂直item。-------------------------------
+.item-horizontal {
+    .item-horizontal(100%, 9.5rem, 1rem, #fff, 25%, 68.8%, 6.16%, 1.5rem, 1.5rem);
+}
+
+.item-horizontal-compact {
+    .item-horizontal-compact(100%, 9.5rem, 1rem, 0.8rem, #fff, 
+        6.8rem, 0.5rem, 6.3rem, 2.5rem);
+}
+
+.item-vertical {
+    //.item-vertical(27.777%, auto, 0, #fff, 7.5rem, 66.6%, 6.6%, 1.5rem, 1.5rem);
+    .item-vertical(30.5555%, auto, 0, #fff, 7.5rem, 66.6%, 6.6%, 1.5rem, 1.5rem);
+}
+
+.item-group { // 默认3列，如app
+    .clearfix();
+    .item-vertical {
+        float: left;
+        &:not(:last-child) {
+            margin-right: 4.166666%;
+        }
+        &:nth-of-type(3n) {
+            margin-right: 0;
+        }
+        &:nth-child(n+4) {
+            margin-top: 0.5rem;
+        }
+    }
+}
+.item-group-compact { // 默认3列，紧凑，如视频
+    .clearfix();
+    .item-vertical {
+        float: left;
+        width: 32.4%;
+        &:not(:last-child) {
+            margin-right: 1.38888%;
+        }
+        &:nth-of-type(3n) {
+            margin-right: 0;
+        }
+        &:nth-child(n+4) {
+            margin-top: 0.5rem;
+        }
+    }
+}

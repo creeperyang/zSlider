@@ -1,0 +1,29 @@
+{
+  "name": "zSlider",
+  "version": "0.0.1",
+  "homepage": "https://github.com/creeperyang/zSlider",
+  "authors": [
+    "creeperyang <yangcreeper@hotmail.com>"
+  ],
+  "description": "A pure JavaScript Carousel/Slider plugin that works well at Mobile/PC",
+  "moduleType": [
+    "globals"
+  ],
+  "main": [
+    "dist/zSlider.js",
+    "dist/zSlider.css",
+  ],
+  "keywords": [
+    "Slider",
+    "Carousel",
+    "JavaScript plugin"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
