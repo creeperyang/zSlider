@@ -20,15 +20,15 @@
 })(this, function() {
 
     /**
-     * defaults: Slider默认配置项
+     * defaults: Slider default config
     */
     var defaults = {
-        'current': 0, // 初始化时显示项index
-        'duration': 0.8, // 单位：秒
-        'minPercentToSlide': null, // swipe至少多少距离时触发slide
-        'autoplay': true, // 是否自动轮播
-        'direction': 'left', // 自动轮播方向
-        'interval': 5 // 单位：秒，最好大于2（尤其开启自动轮播时）
+        'current': 0, // which to show when init
+        'duration': 0.8, // seconds
+        'minPercentToSlide': null, // percent to decide to slide
+        'autoplay': true, // autoplay?
+        'direction': 'left', // autoplay direction
+        'interval': 5 // seconds
     };
 
     var nextTick = function(fn) {
@@ -40,26 +40,36 @@
     };
 
     var setCompatibleStyle = (function(style) {
-        var prefixes = ['moz', 'webkit', 'o', 'ms'];
+        var prefixes = ['-moz-', '-webkit-', '-o-', '-ms-'];
+        var domPrefixes = ['Moz', 'Webkit', 'O', 'ms'];
         var len = prefixes.length;
-        function getGoodPropName(prop) {
-            var tmp;
-            var i;
+        function getGoodProp(prop) {
             if(prop in style) {
-                return prop;
+                return {
+                    prop: prop,
+                    prefix: ''
+                };
             } else {
                 prop = capitalizeFirstLetter(prop);
-                for(i = 0; i < len; i++) {
-                    tmp = prefixes[i] + prop;
-                    if(tmp in style) {
+                var tmpProp;
+                var prefix;
+                for(var i = 0; i < len; i++) {
+                    tmpProp = domPrefixes[i] + prop;
+                    if(tmpProp in style) {
+                        prefix = prefixes[i];
                         break;
                     }
                 }
-                return tmp;
+                return {
+                    prop: tmpProp,
+                    prefix: prefix
+                };
             }
         }
         return function(el, prop, value) {
-            el.style[getGoodPropName(prop)] = value;
+            var res = getGoodProp(prop);
+            el.style[res.prop] = value;
+            el.style[res.prop] = res.prefix + value;
         };
     })(document.body.style);
 
@@ -69,7 +79,7 @@
 
         e = document.createEvent('Event');
         e.initEvent(type, bubbles, cancelable);
-        
+
         return e;
     };
 
@@ -118,7 +128,7 @@
         if(index > lastIndex || index < 0) {
             index = 0;
         }
-        if(index !== 0) { 
+        if(index !== 0) {
             list = list.splice(index, count - index).concat(list);
         }
 
@@ -126,7 +136,7 @@
         list[lastIndex].uuid = lastIndex;
         setCompatibleStyle(list[0], 'transform', 'translate3d(0, 0, 0)');
         setCompatibleStyle(list[lastIndex], 'transform', 'translate3d(-' + width + 'px, 0, 0)');
-        
+
         for (i = 1; i < lastIndex; i++) {
             item = list[i];
             item.uuid = i;
@@ -156,7 +166,7 @@
         }
         indicators.push(indicatorWrap.appendChild(item));
         indicators[activeIndex].className = 'z-slide-dot ' + activeClass;
-        
+
         slider.indicatorWrap = indicatorWrap;
         slider.indicators = indicators;
         slider.container.appendChild(indicatorWrap);
@@ -419,7 +429,7 @@
             }
         }
         // list is a StaticNodeList rather than a real array, convert it.
-        list = Array.prototype.slice.call(list); 
+        list = Array.prototype.slice.call(list);
         count = list.length;
         if(count === 1) {
             return;
@@ -472,7 +482,7 @@
         var cur, pre, next, customEvent;
         direction = direction || this.options.direction;
         diffX = diffX || 0;
-        
+
         if(direction === 'left') {
             list.push(list.shift());
             this.current = (current + 1) % count;
@@ -493,7 +503,7 @@
             setTransition(pre, cur, next, transitionText, transitionText, '');
         } else if(direction === 'right' || (direction === 'restore' && diffX < 0)) {
             setTransition(pre, cur, next, '', transitionText, transitionText);
-        } 
+        }
         move(pre, cur, next, 0, width);
 
         if(this.realCount === 2) {
