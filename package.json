@@ -1,6 +1,6 @@
 {
   "name": "zSlider",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A pure JavaScript Carousel/Slider plugin that works well at Mobile and PC",
   "main": "index.js",
   "scripts": {
