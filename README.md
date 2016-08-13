@@ -39,12 +39,12 @@ When init with `new Slider(container, slideItems, option);`, a optional config c
 
 ```js
 var option = {
-    'current': 0, // 初始化时显示项index
-    'duration': 0.8, // 单位：秒
-    'minPercentToSlide': null, // swipe至少多少距离时触发slide
-    'autoplay': true, // 是否自动轮播
-    'direction': 'left', // 自动轮播方向
-    'interval': 5 // 单位：秒，最好大于2（尤其开启自动轮播时）
+    'current': 0, // which to show when init
+    'duration': 0.8, // animation duration, seconds
+    'minPercentToSlide': null, // percent to decide to slide
+    'autoplay': true, // autoplay?
+    'direction': 'left', // autoplay direction
+    'interval': 5 // seconds
 };
 ```
 
@@ -60,7 +60,7 @@ grunt serve
 ```
 
 ## Release History
-2015-04-30&nbsp;&nbsp;&nbsp;&nbsp;`v0.0.1`&nbsp;&nbsp;&nbsp;&nbsp;初始版本
+2015-04-30&nbsp;&nbsp;&nbsp;&nbsp;`v0.0.1`&nbsp;&nbsp;&nbsp;&nbsp;init
 
 ## License
 Copyright (c) 2015 creeperyang. Licensed under the MIT license.
