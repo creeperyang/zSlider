@@ -47,7 +47,7 @@
             if(prop in style) {
                 return {
                     prop: prop,
-                    prefix: ''
+                    prefix: prefixes[1] // enforce add `-webkit-`
                 };
             } else {
                 prop = capitalizeFirstLetter(prop);
@@ -69,7 +69,9 @@
         return function(el, prop, value) {
             var res = getGoodProp(prop);
             el.style[res.prop] = value;
-            el.style[res.prop] = res.prefix + value;
+            if (value) {
+                el.style[res.prop] = res.prefix + value;
+            }
         };
     })(document.body.style);
 
